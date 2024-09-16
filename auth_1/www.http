@@ -18,3 +18,9 @@ Content-Type: application/json
     "email":"cm1@gmail.com",
     "password":"password"
 }
+
+
+###
+GET http://localhost:5000/api/auth/profile/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2ZGQ2NzVlZmRjOGQ3NzI1MjVmOTMxNiIsImlhdCI6MTcyNjIwNzYxNCwiZXhwIjoxNzI2MjExMjE0fQ.gKaFmyJmAQgOGI-FACAdxYCE1100-zpJVfTVb4BkCi4
