@@ -4,7 +4,7 @@ import { useState } from 'react'
 function Chat(){
   return (
     <div>
-      App
+      Chat
     </div>
   )
 }
