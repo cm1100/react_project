@@ -6,6 +6,7 @@ import './App.css'
 import Register from './pages/Register'
 import Login from './pages/Login'
 import Chat from './pages/Chat'
+import SetAvatar from './pages/SetAvatar'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -15,7 +16,9 @@ function App() {
       <Routes>
         <Route path='register' element={<Register/>}></Route>
         <Route path='login' element={<Login/>}></Route>
-        <Route path='chat' element={<Chat/>}></Route>
+        <Route path='setAvatar' element={<SetAvatar/>}></Route>
+
+        <Route path='' element={<Chat/>}></Route>
       </Routes>
     </BrowserRouter>
   )

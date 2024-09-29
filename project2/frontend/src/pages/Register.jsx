@@ -1,8 +1,10 @@
-import { useState } from 'react'
-import { Link } from 'react-router-dom';
+import { useState ,useEffect} from 'react'
+import { Link, useNavigate } from 'react-router-dom';
 import styled from 'styled-components'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import axios from 'axios';
+import { registerRoute } from '../utils/APIRoutes';
 
 function Register() {
 
@@ -25,6 +27,9 @@ function Register() {
             confirmPassword: "",
         }
     )
+
+
+    const navigate = useNavigate();
 
     const validationRules=[
 
@@ -62,11 +67,28 @@ function Register() {
 
     }
 
-    const handleSubmit = (e) => {
+    useEffect(()=>{
+        if(localStorage.getItem('chat-app-user')){
+          navigate('/')
+        }
+      })
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log("in here")
-        //if(handleVa)
-        handleValidation();
+        if(handleValidation()){
+            const {username,email,password}=values;
+            const {data} = await axios.post(registerRoute,{
+                username,email,password
+            });
+            if(data.status==false){
+                toast.error(data.msg,toastOptions);
+            }
+            else if(data.status=true){
+                localStorage.setItem("chat-app-user",JSON.stringify(data.user));
+                navigate('/');
+            }
+
+        }
     }
 
     const handleChange = (e) => {
